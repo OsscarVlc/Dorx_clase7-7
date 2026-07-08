@@ -1,0 +1,22 @@
+on:
+  push:
+jobs:
+  python-job:
+    runs-on: ubuntu-latest
+    container: python:3.12
+    steps:
+      - uses: actions/checkout@v3
+      - run: python --version
+        run: |
+          python <<EOF
+          from datetime import datetime
+
+          print("Hola Dorx desde GitHub Actions con python")
+          print("Fecha y hora:", datetime.now())
+
+          for i in range(1, 6):
+              print(f"Número: {i}")
+
+          print("Adios")
+          EOF
+          
